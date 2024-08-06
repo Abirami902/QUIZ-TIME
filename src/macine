@@ -1,0 +1,142 @@
+
+// import React, { useState } from "react";
+// import 'bootstrap/dist/css/bootstrap.css';
+// import './App.css';
+
+// const Quiz = () => {
+//   const [questions, setQuestions] = useState([]);
+//   const [currentQuestion, setCurrentQuestion] = useState({
+//     question: "",
+//     options: ["", "", ""],
+//     correctOptionIndex: -1,
+//     mark: ""
+//   });
+
+//   const [count, setCount] = useState(4);
+//   const [isVisible, setIsVisible] = useState(false);
+
+//   const handleChange = (e, index) => {
+//     const { name, value } = e.target;
+//     if (index !== undefined) {
+//       const options = [...currentQuestion.options];
+//       options[index] = value;
+//       setCurrentQuestion({ ...currentQuestion, options });
+//     } else {
+//       setCurrentQuestion({ ...currentQuestion, [name]: value });
+//     }
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     setIsVisible(true);
+//     setQuestions([...questions, currentQuestion]);
+
+//     setCurrentQuestion({
+//       question: "",
+//       options: ["", "", ""],
+//       correctOptionIndex: -1,
+//       mark: ""
+//     });
+//   };
+
+//   const handleDeleteQuestion = (indexToDelete) => {
+//     const status = window.confirm("Delete?");
+//     if (status) {
+//       const updatedQuestions = questions.filter((_, index) => index !== indexToDelete);
+//       setQuestions(updatedQuestions);
+//     }
+//   };
+
+//   const ADD = () => {
+//     setCount(count + 4);
+//   };
+
+//   const SUBTRACT = () => {
+//     if (count === 0) {
+//       setCount(1000);
+//     } else {
+//       setCount(count - 4);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <div className="A">
+//         <form className="form" onSubmit={handleSubmit}>
+//           <h1>Quiz time</h1>
+//           <div className="form-div">
+//             <input
+//               name="question"
+//               value={currentQuestion.question}
+//               onChange={handleChange}
+//               className="form-control"
+//               type="text"
+//               placeholder="Enter your question"
+//             />
+//           </div>
+//           {currentQuestion.options.map((option, index) => (
+//             <div className="form-div" key={index}>
+//               <input
+//                 value={option}
+//                 onChange={(e) => handleChange(e, index)}
+//                 className="form-control mt-3"
+//                 type="text"
+//                 placeholder={`Add option ${index + 1}`}
+//               />
+//             </div>
+//           ))}
+//           <div className="form-div">
+//             <input
+//               name="mark"
+//               value={currentQuestion.mark}
+//               onChange={handleChange}
+//               className="form-control mt-3"
+//               type="text"
+//               placeholder={`Mark (${count})`}
+//             />
+//           </div>
+//           <button
+//             type="button"
+//             onClick={ADD}
+//             className="submit-btn form-filed btn btn-primary w-20 mt-3"
+//           >
+//             Right
+//           </button>
+//           <button
+//             type="button"
+//             onClick={SUBTRACT}
+//             className="submit-btn form-filed btn btn-primary w-20 mt-3"
+//           >
+//             Wrong
+//           </button>
+//           <button type="submit" className="submit-btn form-filed btn btn-success w-20 mt-3">
+//             Submit Question
+//           </button>
+//         </form>
+//       </div>
+//       {isVisible && (
+//         <div className="card-group">
+//           {questions.map((item, index) => (
+//             <div className="card" key={index}>
+//               <div className="card-body">
+//                 <h5 className="card-title">{item.question}</h5>
+//                 {item.options.map((option, optIndex) => (
+//                   <p className="card-text" key={optIndex}>{option}</p>
+//                 ))}
+//                 <p className="card-text">Mark: {item.mark}</p>
+//                 <button
+//                   className="btn btn-danger"
+//                   onClick={() => handleDeleteQuestion(index)}
+//                 >
+//                   Delete
+//                 </button>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Quiz;
